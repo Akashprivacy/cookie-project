@@ -48,7 +48,7 @@ COPY . .
 RUN cd backend && npm run build
 
 # Create start script for Docker
-RUN echo '#!/bin/bash\necho "Starting Cookie Care in Docker..."\necho "Starting backend..."\ncd backend && npm run dev &\necho "Waiting for backend..."\nsleep 8\necho "Starting frontend..."\nnpm run dev -- --port 5174 --host 0.0.0.0\nwait' > docker-start.sh && chmod +x docker-start.sh
+RUN echo '#!/bin/bash\necho "Starting Cookie Care in Docker..."\necho "Starting backend..."\ncd backend && npm run dev &\necho "Waiting for backend..."\nsleep 8\necho "Starting frontend..."\nnpm run dev -- --port $PORT --host 0.0.0.0\nwait' > docker-start.sh && chmod +x docker-start.sh
 
 # Expose ports
 EXPOSE 3001 5174
